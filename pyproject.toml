@@ -1,0 +1,52 @@
+[project]
+name = "text-embed-lambda"
+version = "1.0.0"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+dependencies = [
+    "onnxruntime==1.31.0",
+    "tokenizers==0.23.3",
+    "numpy==2.5.4",
+]
+
+[dependency-groups]
+dev = [
+    "bandit==1.9.4",
+    "mypy==2.4.0",
+    "pre-commit==4.7.0",
+    "ruff==0.17.2",
+]
+test = [
+    "pytest==9.1.1",
+    "fastembed==0.9.0",
+    "huggingface-hub==1.9.2",
+]
+
+[tool.uv]
+package = false
+# tokenizers declares huggingface-hub; Tokenizer.from_file never needs it — excluded
+# from artifact and venv. The equivalence test's fastembed import rides a --with overlay.
+exclude-dependencies = ["huggingface-hub"]
+
+[tool.ruff]
+line-length = 88
+exclude = ["fastembed_source/"]
+
+[tool.ruff.lint]
+# ruff 0.16 expanded the default rule set (59 -> 400+); pinning the 0.15 default
+# set keeps the effective rules identical to the last green lint.
+select = ["E4", "E7", "E9", "F"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.14"
+exclude = ["fastembed_source/", "build/"]
+ignore_missing_imports = true
+disallow_untyped_defs = false
+check_untyped_defs = true
+warn_unused_ignores = false
+warn_return_any = true
+warn_redundant_casts = true
+no_implicit_optional = true

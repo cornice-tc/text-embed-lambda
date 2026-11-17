@@ -1,0 +1,14 @@
+text-embed-lambda
+Copyright 2026 Cornice Technology Corporation
+
+Bundles or derives from the third-party components below; upstream
+LICENSE/NOTICE files are preserved under third_party_licenses/.
+
+Component                            License      Copyright
+snowflake-arctic-embed-xs (weights)  Apache-2.0   Snowflake, Inc.
+  https://huggingface.co/Snowflake/snowflake-arctic-embed-xs
+fastembed (adapted in embedder.py)   Apache-2.0   Qdrant
+  https://github.com/qdrant/fastembed
+HuggingFace tokenizers               Apache-2.0   Hugging Face, Inc.
+ONNX Runtime                         MIT          Microsoft Corporation
+NumPy                                BSD-3        NumPy Developers

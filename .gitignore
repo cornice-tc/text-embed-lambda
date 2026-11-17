@@ -1,0 +1,16 @@
+# Model files (downloaded via huggingface-hub)
+model/
+
+# Virtual environment (created by uv sync)
+.venv/
+
+# Python cache
+*.pyc
+__pycache__/
+
+# Lambda zip-build artifacts (produced by scripts/build_zip.sh)
+build/
+dist/
+
+# OS
+.DS_Store
